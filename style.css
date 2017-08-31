@@ -1,0 +1,120 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+#wrapper {
+    max-width: 800px;
+    margin:auto;
+}
+#title {
+  margin-top:50px;
+  margin-bottom:50px;
+  font-size:45px;
+  font-family:'Monoton', cursive;
+  font-weight:100;
+  color:#b8defa;
+  text-shadow: 3px 3px 0px black, 0px 20px 70px #ceccff, 0px -20px 70px #ceccff;
+    
+}
+body {
+  font-family:'Days One', sans-serif;
+  text-align:center;
+  color:white;
+  background-color:#191919;
+}
+.timer > * {
+  display:inline-block;
+  margin: 0px 10px;
+}
+.button {
+  cursor:pointer;
+}
+.setButton {
+    padding:0px 20px;
+    background:gray;
+    border-radius:10px;
+}
+#sessionClock {
+  font-size:1.75em;
+  padding:10px;
+  max-width:375px;
+  margin:auto;
+}
+#breakClock{
+  padding:10px;
+  max-width:375px;
+  margin:auto;
+}
+#wrapper > p {
+    margin-top:50px;
+}
+#timerButtons {
+  margin-top:50px;
+}
+#timerButtons > div {
+  display:inline-flex;
+  border-radius:50%;
+  padding:50px 50px;
+  height:40px;
+  width:40px;
+  position:relative;
+}
+#timerButtons > div > * {
+  position:absolute;
+  left:0;
+  right:0;
+  top:20%;
+}
+#start {
+  background-color:#25ef6b;
+  box-shadow:4px -2px #0ebe4c, 0px 0px 30px #25ef6b, 5px -7px 50px #25ef6b;
+  margin-right:10px;
+}
+#start:active {
+  background-color:#25ef6b;
+  box-shadow:0px 0px 30px #25ef6b;
+  transform:translate(5px, -3px);
+}
+#reset {
+  background-color:#ffe642;
+  box-shadow:-4px -2px #d1b500, 0px 0px 30px #ffe642, -5px -7px 50px #ffe642;
+  margin-left:10px;
+}
+#reset:active {
+  box-shadow:0px 0px 30px #ffe642;
+  transform:translate(-5px, -3px);
+}
+#stop {
+  background-color:#f14141;
+  box-shadow:4px -2px #da1010, 0px 0px 50px #f14141, -10px 10px 100px #f14141;
+  margin-right:10px;
+}
+#stop:active {
+  box-shadow:0px 0px 30px #f14141;
+  transform:translate(5px, -3px);
+}
+#resetGrey {
+  background-color:#545454;
+  box-shadow:-6px -4px #404040;
+  color:black;
+  cursor:not-allowed;
+  margin-left:10px;
+}
+.grey {
+  color:#808080;
+  cursor:not-allowed;
+}
+.activeClock {
+  background:#8df6b2;
+  border-radius: 50px;
+  color:black;
+}
+#sessionCounter {
+  min-width:300px;
+}
+#breakCounter {
+  min-width:200px;
+}
+#sessionTitle {
+  margin-bottom: 0px;
+}

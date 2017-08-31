@@ -2,250 +2,46 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Days+One|Monoton">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Pomodoro Clock</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Days+One|Monoton');
-        html {
-          height: 100%;
-          box-sizing: border-box;
-        }
-        #title {
-          margin-top:50px;
-          font-family:'Monoton', cursive;
-          font-size:6em;
-          font-weight:100;
-          color:#b8defa;
-          text-shadow: 3px 3px 0px black, 0px 20px 70px #ceccff, 0px -20px 70px #ceccff;
-        }
-        body {
-          font-family:'Days One', sans-serif;
-          text-align:center;
-          color:white;
-          background-color:#191919;
-        }
-        .timer > * {
-          display:inline-block;
-          margin: 0px 10px;
-        }
-        .button {
-          cursor:pointer;
-        }
-        #sessionClock {
-          font-size:1.75em;
-          margin-top:-50px;
-        }
-        #breakClock{
-          margin-top:50px;
-        }
-        body > p {
-          position:absolute;
-          right: 0;
-          bottom: 0;
-          left: 0;
-        }
-        #timerButtons {
-          margin-top:75px;
-        }
-        #timerButtons > div {
-          display:inline-flex;
-          margin: 0px 100px;
-          border-radius:50%;
-          padding:50px 50px;
-          height:70px;
-          width:70px;
-          position:relative;
-        }
-        #timerButtons > div > h1 {
-          position:absolute;
-          left:0;
-          right:0;
-        }
-        #start {
-          background-color:#25ef6b;
-          box-shadow:6px -4px #0ebe4c, 0px 0px 30px #25ef6b, 5px -7px 50px #25ef6b;
-        }
-        #start:active {
-          background-color:#25ef6b;
-          box-shadow:0px 0px 30px #25ef6b;
-          transform:translate(5px, -3px);
-        }
-        #reset {
-          background-color:#ffe642;
-          box-shadow:-6px -4px #d1b500, 0px 0px 30px #ffe642, -5px -7px 50px #ffe642;
-        }
-        #reset:active {
-          box-shadow:0px 0px 30px #ffe642;
-          transform:translate(-5px, -3px);
-        }
-        #stop {
-          background-color:#f14141;
-          box-shadow:6px -4px #da1010, 0px 0px 50px #f14141, -10px 10px 100px #f14141;
-        }
-        #stop:active {
-          box-shadow:0px 0px 30px #f14141;
-          transform:translate(5px, -3px);
-        }
-        #resetGrey {
-          background-color:#545454;
-          box-shadow:-6px -4px #404040;
-          color:black;
-          cursor:not-allowed;
-        }
-        .grey {
-          color:#808080;
-          cursor:not-allowed;
-        }
-        .activeClock {
-          color:#8df6b2;
-          text-shadow: 0px 0px 70px #ceccff;
-        }
-        #sessionCounter {
-          min-width:350px;
-        }
-        #breakCounter {
-          min-width:200px;
-        }
-        #sessionTitle {
-          margin-bottom: 0px;
-        }
-        #sessionTitle, #breakTitle {
-          text-shadow:5px 5px 0px black;
-        }
-    </style>
 </head>
 <body>
-<h1 id="title">POMODORO CLOCK</h1>
-<div id="sessionClock">
-  <h1 id="sessionTitle">SESSION</h1>
-  <div class="timer" id="sessionTime"><h1 class="button setButton" id="sessionPlus">+</h1><h1 id="sessionCounter">00:01:00</h1><h1 class="button setButton" id="sessionMinus">-</h1></div>
-</div>
-<div id="breakClock">
-<h2 id="breakTitle">BREAK</h2>
-  <div class="timer" id="breakTime"><h2 class="button setButton" id="breakPlus">+</h2><h2 id="breakCounter">00:01:00</h2><h2 class="button setButton" id="breakMinus">-</h2></div>
-</div>
-<div id="timerButtons"><div class="button startStop" id="start"><h1>START</h1></div><div class="button resetBtn" id="reset"><h1>RESET</h1></div></div>
-<p>Written by QuanchiFootball</p>
-    
+    <div id="wrapper" class="container">
+        <div>
+            <h1 id="title">POMODORO CLOCK</h1>
+        </div>
+        <div id="sessionClock">
+            <h1 id="sessionTitle">SESSION</h1>
+            <h1 id="sessionCounter">00:01:00</h1>
+            <div class="timer" id="sessionTime">
+                <h1 class="button setButton" id="sessionPlus">+</h1>
+                <h1 class="button setButton" id="sessionMinus">-</h1>
+            </div>
+        </div>
+        <div id="breakClock">
+            <h2 id="breakTitle">BREAK</h2>
+            <h1 id="breakCounter">00:01:00</h1>
+            <div class="timer" id="breakTime">
+                <h1 class="button setButton" id="breakPlus">+</h1>
+                <h1 class="button setButton" id="breakMinus">-</h1>
+            </div>
+        </div>
+        <div id="timerButtons">
+            <div class="button startStop" id="start">
+                <h3>START</h3>
+            </div>
+            <div class="button resetBtn" id="reset">
+                <h3>RESET</h3>
+            </div>
+        </div>
+        <p>Written by QuanchiFootball</p>
+    </div>
 <!-- 
     Start of JS
 -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<script>
-var session = 60;
-var breaks = 60;
-var sessionMax = 60;
-var breakMax = 60;
-var timer;
-var sessionActive = true;
-var formatted = function(time){
-  hours = Math.floor(time/3600);
-  minutes = Math.floor((time - hours*3600)/60);
-  seconds = time - (hours*3600 + minutes*60);
-  return (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-};
-var pushFormat = function(counter, time){
-  $(counter).text(formatted(time));
-};
-var resetTimes = function(){
-  session = sessionMax;
-  breaks = breakMax;
-  $("#sessionTitle").removeClass('activeClock');
-  $("#breakTitle").removeClass('activeClock');
-  sessionActive = true;
-  pushFormat("#sessionCounter", session);
-  pushFormat("#breakCounter", breaks);
-};
-var setTime = function(buttonID){
-  switch(buttonID){
-    case "sessionPlus":
-      session = Math.floor(session/60)*60;
-      session += 60;
-      pushFormat("#sessionCounter", session);
-      break;
-    case "sessionMinus":
-      session = Math.floor(session/60)*60;
-      session -= 60;
-      if(session < 60){
-        session = 60;
-      }
-      pushFormat("#sessionCounter", session);
-      break;
-    case "breakPlus":
-      breaks = Math.floor(breaks/60)*60;
-      breaks += 60;
-      pushFormat("#breakCounter", breaks);
-      break;
-    case "breakMinus":
-      breaks = Math.floor(breaks/60)*60;
-      breaks -= 60;
-      if(breaks < 60){
-        breaks = 60;
-      }
-      pushFormat("#breakCounter", breaks);
-      break;
-    default:
-      break;
-  }
-  sessionMax = session;
-  breakMax = breaks;
-};
-var startStopReset = function(buttonID){
-  if(buttonID == "start"){
-    $(".startStop > h1").text("STOP");
-    $(".startStop").attr('id', 'stop');
-    $(".resetBtn").attr('id', 'resetGrey');
-    $(".setButton").addClass('grey');
-    countdown();
-  } else {
-    $(".startStop > h1").text("START");
-    $(".startStop").attr('id', 'start');
-    $(".resetBtn").attr('id', 'reset');
-    $(".setButton").removeClass('grey');
-    clearInterval(timer);
-  }
-};
-var countdown = function(){
-  timer = setInterval(function(){
-      if(sessionActive == true){
-        if(!$("#sessionTitle").hasClass('activeClock')){
-          $("#breakTitle").removeClass('activeClock');
-          $("#sessionTitle").addClass('activeClock');
-        }
-        session--;
-        pushFormat("#sessionCounter", session);
-        if(session === 0){
-          session = sessionMax;
-          pushFormat("#sessionCounter", session);
-          sessionActive = !sessionActive;
-        }
-      } else {
-        $("#sessionTitle").removeClass('activeClock');
-        $("#breakTitle").addClass('activeClock');
-        breaks--;
-        pushFormat("#breakCounter", breaks);
-        if(breaks === 0){
-          breaks = breakMax;
-          pushFormat("#breakCounter", breaks);
-          sessionActive = !sessionActive;
-        }
-      }
-    }, 1000);
-};
-$(document).ready(function(){
-  pushFormat("#sessionCounter", session);
-  pushFormat("#breakCounter", breaks);
-  $(".button").click(function(){
-    var id = $(this).attr('id');
-    if(id == "start" || id == "stop"){
-      startStopReset(id);
-    } else if (id != "start" && id != "stop" && id != "reset"){
-      if($(".startStop").attr('id') != "stop")
-      setTime(id);
-    } else {
-      resetTimes();
-    }
-  });
-});
-</script>
+<script src="main.js"></script>
 </body>
 </html>
